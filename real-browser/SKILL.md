@@ -1,6 +1,6 @@
 ---
 name: real-browser
-description: Automate web navigation in the user's REAL, visible Chrome (their own profile and logins) instead of a headless browser. Use whenever a task needs a website the user is logged into or a dashboard without an API (Meta for Developers, Google/Azure/AWS consoles, admin panels, forms, support portals, forum posts): the user logs in by hand, the agent then navigates, reads, fills and clicks, checking a screenshot after each step. Works on Windows (also from WSL), macOS and Linux.
+description: "Automate web navigation in the user's REAL, visible Chrome (their own profile and logins) instead of a headless browser. Use whenever a task needs a website the user is logged into or a dashboard without an API (Meta for Developers, Google/Azure/AWS consoles, admin panels, forms, support portals, forum posts): the user logs in by hand, the agent then navigates, reads, fills and clicks, checking a screenshot after each step. Works on Windows (also from WSL), macOS and Linux."
 ---
 
 # Real browser (the user's own Chrome, driven by the agent)
