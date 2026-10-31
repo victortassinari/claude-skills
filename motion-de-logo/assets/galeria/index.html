@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motions do logo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Nunito:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Galeria: grade de palcos 16:9; cada proposta entra sozinha quando o meta.js dela aparece. */
+:root{
+  /* troque pelas cores da marca: acento (laranja), principal (roxo), escuro (noite), apoio (lilás) */
+  --laranja:#F73C07;--roxo:#6A009E;--noite:#2C0142;--profundo:#450166;--lilas:#B02BF1;--nevoa:#F4F1F8;--branco:#fff;
+  --tinta:#F4F1F8;--tinta-2:#BFA9D6;--linha:rgba(255,255,255,.12);
+  --f-marca:'Comfortaa',system-ui,sans-serif;--f-texto:'Nunito',system-ui,sans-serif;--f-dado:'JetBrains Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#1B0029;color:var(--tinta);font:400 15px/1.55 var(--f-texto)}
+.wrap{max-width:1500px;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left,0px));padding-block:0 80px}
+header.topo{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-block:28px 40px}
+header.topo a{color:var(--tinta-2);text-decoration:none;font-weight:700;font-size:14px}
+header.topo a:hover{color:var(--laranja)}
+.marca{width:140px;display:block}
+h1{font:700 clamp(34px,5vw,64px)/1 var(--f-marca);letter-spacing:-.03em;margin:0 0 14px}
+h1 em{font-style:normal;color:var(--laranja)}
+.intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:end;margin-bottom:40px}
+.intro p{color:var(--tinta-2);max-width:62ch;margin:0}
+.status{font:400 13px/1.8 var(--f-dado);color:var(--tinta-2);text-align:right}
+.status b{color:var(--tinta);font-weight:600}
+.barra{height:4px;background:var(--linha);margin-top:10px;border-radius:9px;overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--laranja);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.filtros button{all:unset;cursor:pointer;font:600 12px var(--f-dado);letter-spacing:.06em;padding:8px 12px;border-radius:99px;border:1px solid var(--linha);color:var(--tinta-2)}
+.filtros button[aria-pressed="true"]{background:var(--branco);color:var(--noite);border-color:var(--branco)}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:28px 22px}
+.card{display:grid;gap:12px;min-width:0}
+.tela{position:relative;aspect-ratio:16/9;background:var(--noite);border:1px solid var(--linha);border-radius:6px;overflow:hidden}
+.tela iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+.tela .acoes{position:absolute;right:10px;bottom:10px;display:flex;gap:6px;opacity:0;transition:opacity .2s}
+.card:hover .acoes,.card:focus-within .acoes{opacity:1}
+.acoes a,.acoes button{all:unset;cursor:pointer;font:600 11px var(--f-dado);background:rgba(20,0,32,.75);backdrop-filter:blur(6px);color:#fff;padding:7px 10px;border-radius:99px}
+.acoes a:hover,.acoes button:hover{background:var(--laranja)}
+.espera{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;color:var(--tinta-2);font:400 12px var(--f-dado);text-align:center;padding:20px}
+.espera svg{width:54px;height:auto;animation:respira 2.4s ease-in-out infinite}
+@keyframes respira{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:.7;transform:translateY(-4px)}}
+.ficha{display:grid;gap:4px}
+.ficha-topo{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.ficha h2{font:700 19px/1.25 var(--f-marca);margin:0;letter-spacing:-.01em}
+.selo{font:600 10px/1 var(--f-dado);letter-spacing:.08em;text-transform:uppercase;padding:5px 7px;border-radius:99px;white-space:nowrap}
+.selo--dirigida{background:rgba(176,43,241,.18);color:#D9A6F7}
+.selo--livre{background:rgba(247,60,7,.18);color:#FF9C7E}
+.ficha p{margin:0;color:var(--tinta-2);font-size:14px}
+.ficha .tags{display:flex;gap:6px 12px;flex-wrap:wrap;font:400 12px var(--f-dado);color:var(--tinta-2)}
+.ficha .tags span::before{content:"● ";color:var(--laranja)}
+.ficha .autor{font:400 11px var(--f-dado);color:#8E78A6}
+.card.pendente .ficha h2{color:#8E78A6}
+.vazio{grid-column:1/-1;color:var(--tinta-2)}
+@media (max-width:760px){.intro{grid-template-columns:minmax(0,1fr)}.status{text-align:left}}
+@media (prefers-reduced-motion:reduce){.espera svg{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topo">
+    <img class="marca" src="logo.svg" alt="Logo">
+    <a href="../index.html">Manual de marca ↗</a>
+  </header>
+  <section class="intro">
+    <div>
+      <h1>Motions em <em>produção</em></h1>
+      <p>Cada estúdio entrega duas propostas: uma com direção definida e uma de direção livre. As propostas entram nesta página sozinhas, assim que ficam prontas. Passe o mouse sobre um card para abrir em tela cheia.</p>
+    </div>
+    <div class="status"><span id="contagem"><b>0</b> prontas</span><br><span id="hora">verificando…</span><div class="barra"><i id="progresso"></i></div></div>
+  </section>
+  <div class="filtros" role="group" aria-label="Filtrar">
+    <button type="button" data-f="todas" aria-pressed="true">Todas</button>
+    <button type="button" data-f="prontas" aria-pressed="false">Só prontas</button>
+    <button type="button" data-f="dirigida" aria-pressed="false">Dirigidas</button>
+    <button type="button" data-f="livre" aria-pressed="false">Livres</button>
+  </div>
+  <div class="grade" id="grade"></div>
+</div>
+
+<script src="slots.js"></script>
+<script>
+// Pastas esperadas: a direção de cada uma está no briefing de cada agente.
+var SLOTS = window.SLOTS || [];
+var prontas = {}, filtro = 'todas';
+var grade = document.getElementById('grade');
+var balao = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="#6A009E"/></svg>';
+
+SLOTS.forEach(function(s){
+  var c = document.createElement('article');
+  c.className = 'card pendente'; c.id = 'card-' + s[0]; c.dataset.tipo = s[1];
+  c.innerHTML = '<div class="tela"><div class="espera">' + balao + '<span>em produção</span></div></div>' +
+    '<div class="ficha"><div class="ficha-topo"><h2>' + s[2] + '</h2><span class="selo selo--' + s[1] + '">' + s[1] + '</span></div>' +
+    '<p class="autor">' + s[3] + ' · pasta ' + s[0] + '</p></div>';
+  grade.appendChild(c);
+});
+
+window.registerMotion = function(m){
+  if (!m || !m.id || prontas[m.id]) return;
+  var c = document.getElementById('card-' + m.id); if (!c) return;
+  prontas[m.id] = m;
+  var url = m.id + '/index.html';
+  c.classList.remove('pendente');
+  c.querySelector('.tela').innerHTML = '<iframe src="' + url + '?embed=1" title="' + esc(m.titulo) + '" loading="lazy"></iframe>' +
+    '<div class="acoes"><button type="button" class="replay">Replay</button><a href="' + url + '" target="_blank" rel="noopener">Abrir ↗</a></div>';
+  c.querySelector('.replay').onclick = function(){ var f = c.querySelector('iframe'); f.src = f.src; };
+  var s = SLOTS.filter(function(x){ return x[0] === m.id; })[0];
+  c.querySelector('.ficha').innerHTML = '<div class="ficha-topo"><h2>' + esc(m.titulo) + '</h2><span class="selo selo--' + s[1] + '">' + s[1] + '</span></div>' +
+    '<p>' + esc(m.conceito || '') + '</p>' +
+    '<div class="tags">' + (m.usos || []).map(function(u){ return '<span>' + esc(u) + '</span>'; }).join('') + '</div>' +
+    '<p class="autor">' + esc(m.duracao || '') + ' · ' + esc(m.tecnica || '') + ' · ' + esc(m.autor || s[3]) + '</p>';
+  atualiza();
+};
+function esc(t){ return String(t).replace(/[&<>"]/g, function(ch){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]; }); }
+
+function atualiza(){
+  var n = Object.keys(prontas).length;
+  document.getElementById('contagem').innerHTML = '<b>' + n + '</b> de ' + SLOTS.length + ' prontas';
+  document.getElementById('progresso').style.width = (100 * n / SLOTS.length) + '%';
+  document.getElementById('hora').textContent = 'última verificação ' + new Date().toLocaleTimeString('pt-BR');
+  aplicaFiltro();
+}
+function aplicaFiltro(){
+  document.querySelectorAll('.card').forEach(function(c){
+    var id = c.id.slice(5), ok = filtro === 'todas' || (filtro === 'prontas' && prontas[id]) || c.dataset.tipo === filtro;
+    c.hidden = !ok;
+  });
+}
+document.querySelectorAll('.filtros button').forEach(function(b){
+  b.onclick = function(){
+    filtro = b.dataset.f;
+    document.querySelectorAll('.filtros button').forEach(function(x){ x.setAttribute('aria-pressed', x === b); });
+    aplicaFiltro();
+  };
+});
+
+// Procura meta.js novos a cada 8 s (funciona abrindo o arquivo direto, sem servidor).
+function procura(){
+  SLOTS.forEach(function(s){
+    if (prontas[s[0]]) return;
+    var sc = document.createElement('script');
+    sc.src = s[0] + '/meta.js?t=' + Date.now();
+    sc.onload = sc.onerror = function(){ sc.remove(); };
+    document.body.appendChild(sc);
+  });
+  setTimeout(atualiza, 1200);
+}
+procura(); setInterval(procura, 8000);
+</script>
+</body>
+</html>
