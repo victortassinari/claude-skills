@@ -414,6 +414,18 @@ def montar(cfg_path):
     x0 = min(r.left() for r in rs); y0 = min(r.top() for r in rs)
     W = math.ceil(max(r.right() for r in rs) - x0); H = math.ceil(max(r.bottom() for r in rs) - y0)
     D = {n: svg_d(p, x0, y0) for n, p in pecas.items()}
+    # círculos saem como círculo exato (4 cúbicas com a constante ótima, erro radial ~0,02%);
+    # passar pelo contorno do skia e por qu2cu deixa o círculo ~0,6% torto, visível em ampliação
+    for el in cfg['elementos']:
+        a = aj[el['nome']]
+        if a['tipo'] == 'circulo':
+            cx, cy, r = K * a['cx'] - x0, K * a['cy'] - y0, K * a['r']
+            k = 0.5519150244935105 * r
+            f = lambda v: ('%.2f' % v).rstrip('0').rstrip('.')
+            q = lambda x, y: f(x) + ' ' + f(y)
+            D[el['nome']] = (f'M{q(cx + r, cy)}C{q(cx + r, cy + k)} {q(cx + k, cy + r)} {q(cx, cy + r)}'
+                             f'C{q(cx - k, cy + r)} {q(cx - r, cy + k)} {q(cx - r, cy)}C{q(cx - r, cy - k)} {q(cx - k, cy - r)} {q(cx, cy - r)}'
+                             f'C{q(cx + k, cy - r)} {q(cx + r, cy - k)} {q(cx + r, cy)}Z')
     cores = {el['nome']: el['cor'] for el in cfg['elementos']}
     marca = cfg.get('nome_marca', 'logo')
     out = cfg['_saida']

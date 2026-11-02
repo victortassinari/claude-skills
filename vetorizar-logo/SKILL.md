@@ -77,6 +77,7 @@ Leia os três resultados da verificação **olhando as imagens**, não só os n�
 - **IoU** acima de 0,92 em PNG de até 300 px já é encaixe fiel; o resto é antisserrilhado da imagem de origem.
 - **diff.png**: vermelho é o que falta no SVG, verde é o que sobra. Uma borda fina e uniforme é normal. Uma **mancha** vermelha ou verde é peça errada (letra trocada, glifo mutilado, região mal recortada).
 - **ampliado-6x.png**: as bordas têm que ser lisas. Facetas (polígonos) indicam problema no engrossamento ou conversão.
+- Quando o usuário achar "serrilhado" num print de tela, capture a página com `device_scale_factor=3` e amplie: o serrilhado de print em 1× é do navegador e da captura, não do vetor. Responda com medida (distância máxima entre curvas, desvio de círculo), não com impressão.
 
 ### 5. Mostre ao usuário lado a lado
 
@@ -89,6 +90,8 @@ Monte uma página HTML local com: PNG original ampliado ao lado do SVG; **o nome
 | Glifo-símbolo sai cortado (falta a haste do "a") | Fonte variável desenha a letra com contornos sobrepostos; "maior contorno" pega só a bacia | O script já remove sobreposições (`removeOverlaps`) depois de instanciar |
 | Bordas facetadas, pingo do "i" poligonal | Engrossamento com `getFillPath` em baixa precisão | `resScale` alto (12) no stroker, já no script |
 | Facetas sutis em ampliação grande | Muitas quadráticas curtas herdadas do TrueType | Conversão para cúbicas com `fontTools.qu2cu` (já no `montar`) |
+| Círculo levemente torto (ponto, pingo) | Círculo passado pelo contorno do skia e reconvertido | Círculos saem como 4 cúbicas exatas (já no `montar`); confira o desvio do raio |
+| "Os redondos não parecem redondos" | O símbolo vem de um glifo (ex.: o "a" da Comfortaa), que não é um círculo geométrico | É fiel à fonte e ao logo original; meça (ajuste de círculo) e explique antes de mexer. Tornar geométrico é redesenho e precisa de aprovação |
 | Letras "inchadas" ou finas demais | Peso errado ou traço extra não modelado | Teste outros pesos; deixe `ajustar_traco` ligado |
 | Um peso "extrapolado" parece melhor no número | Extrapolar o eixo de peso engrossa só na horizontal | Use engrossamento uniforme (o do script), não extrapole o eixo |
 | Rasterização com buracos | Regra par/ímpar em letras com contornos cruzados | O script usa regra de winding |
