@@ -6,6 +6,9 @@ linha: direção clara, timing com intenção, easing autoral, nada de "fade in 
 
 ## Arquivos de referência (leia antes de começar)
 
+- `../LEITURA.md`: a leitura do logo (anatomia, o que só ele tem, contexto, o que fica fora de tom). Sua
+  ideia nasce daqui. Se sua proposta for livre, o ponto de partida do seu prompt é um convite: troque por
+  uma ideia melhor, se encontrar.
 - `../logo-data.js`: define `window.LOGO` com os vetores OFICIAIS (não redesenhe o logo):
   - `viewBox`: a caixa do logo, por exemplo `[0,0,2634,1147]`
   - `logo.<elemento>`: os caminhos do logo final, um por elemento ({ELEMENTOS}).
@@ -21,7 +24,9 @@ linha: direção clara, timing com intenção, easing autoral, nada de "fade in 
 
 {REGRAS_DE_COR}
 - O quadro final de toda animação deve mostrar o logo EXATAMENTE como nos vetores oficiais
-  (posições, proporções, cores). Durante a animação pode tudo; no fim, logo intacto.
+  (posições, proporções, cores). Durante a animação pode tudo; no fim, logo intacto. Peça de uso em
+  loop contínuo, como um loading, não tem quadro final: nela, as peças aparecem sem deformação em repouso.
+- O logo final cabe no quadro com respiro: não use o `viewBox` exato do logo como palco.
 - Só cores da paleta. Tipografia de apoio: {FONTES} (Google Fonts).
 - Textos em português do Brasil, com acentuação correta. Não use travessão (—) em textos.
 
@@ -61,7 +66,8 @@ linha: direção clara, timing com intenção, easing autoral, nada de "fade in 
 
 ## Qualidade esperada
 
-- Uma ideia forte, ligada ao conceito da marca ({CONCEITO}).
+- Uma ideia forte que só funcione com este logo ({CONCEITO}). Se ela servisse igual para outra marca,
+  procure outra.
 - Coreografia em camadas: antecipação, ação principal, overshoot, assentamento. Stagger com
   intenção, nunca linear. Pense em como fica em vídeo E na web.
 - Código limpo e comentado nos pontos de timing, fácil de ajustar duração.
