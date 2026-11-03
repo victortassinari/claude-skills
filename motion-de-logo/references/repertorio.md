@@ -1,8 +1,8 @@
-# Catálogo de direções
+# Repertório de técnicas
 
-Direções testadas, com a descrição que vai no prompt. Escolha as que fazem sentido para a marca, adapte o vocabulário (o que é o símbolo, o que é o acento) e reserve sempre uma **direção livre** por estúdio: várias das melhores propostas saíram dela.
+Abra este arquivo depois que a ideia existir, para executá-la melhor. Ele registra como cada técnica foi feita e o que deu errado; as ideias nascem de `motion/LEITURA.md`. A tabela foi escrita para um logo com símbolo e ponto de acento, então leia "símbolo" e "ponto" como as peças do logo atual. Para peças de uso (loading, tarjas, splash, transições), a linha correspondente traz o que a peça precisa ter.
 
-| Pasta | Direção | Uso | O que pedir |
+| Pasta | Técnica | Uso | Como foi feita |
 |---|---|---|---|
 | traco-vivo | Traço vivo | abertura de vídeo | Contornos (`letrasContorno`) traçados como por uma caneta, com ritmo de escrita (rápido nas retas, lento nas curvas), letra a letra; o símbolo num gesto só; a tinta inunda cada letra a partir do fim do traço; o ponto cai com squash e stretch. Variante só em linha |
 | loading | Suite de loading | web e app | 4 loaders numa página (traço orbitando o contorno do símbolo; três pontinhos "digitando" que se fundem em metaball; o ponto saltitando nas letras com física; preloader de página que enche o símbolo como líquido e revela o logo); tamanhos de 32 a 96 px; gaveta "ver código" |
